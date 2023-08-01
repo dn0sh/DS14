@@ -1,0 +1,23 @@
+[server]
+headless = false
+enableCORS = true
+
+[global]
+showWarningOnDirectExecution = false
+
+[runner]
+magicEnabled = true
+
+[logger]
+level = "error"
+
+[client]
+caching = true
+
+[theme]
+base = "light"
+primaryColor = "#FF6347"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#67E46F"
+textColor = "#31372b"
+font = "sans serif"
