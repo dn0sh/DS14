@@ -281,8 +281,8 @@ def main():
         """, unsafe_allow_html=True
     )
 
-    image = Image.open("src/assets/movietape2.jpg")
-    st.image(image, use_column_width="always")
+#    image = Image.open("src/assets/movietape2.jpg")
+#    st.image(image, use_column_width="always")
 
 
 if __name__ == "__main__":
