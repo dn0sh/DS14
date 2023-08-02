@@ -45,7 +45,7 @@ import random
 
 
 # Streamlit page configuration
-st.set_page_config(page_title="School 21 - Data Science - Project 14  © D.Sha.", page_icon="assets/page_icon.png",
+st.set_page_config(page_title="School 21 - Data Science - Project 14  © D.Sha.", page_icon="src/assets/page_icon.png",
                    layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 
@@ -143,16 +143,38 @@ def main():
     encoded_image = get_base64_of_image(image_path)
 
     html_code = f"""
+    <style>
+        @media screen and (max-width: 800px) {{
+            .service-info {{
+                display: none;
+            }}
+            .image-container {{
+                display: none;
+            }}
+        }}
+        @media screen and (max-width: 400px) {{
+            h3 {{
+                font-size: 16px;
+            }}
+            .service-info {{
+                font-size: 8px;
+            }}
+        }}
+    </style>
     <div style='background-color: white; padding: 16px; use_column_width="always"'>
         <div style='display: flex; justify-content: space-between; align-items: flex-end;
          background-color: {background_color};'>
             <h3 style='flex: 26; text-align: center; color: {text_color};
-             font-family: "sans serif", Helvetica, Arial, sans-serif; font-size: 26px;'>{page_title}</h3>
+             font-family: "sans serif", Helvetica, Arial, sans-serif; font-size: 24px;
+             word-wrap: break-word;'>{page_title}</h3>
             <p style='flex: 1; text-align: center; color: {text_color};'></p>
-            <p style='flex: 66; text-align: center; color: {text_color3};'>{service_info}</p>
+            <p style='flex: 66; text-align: center; color: {text_color3}; font-size: 0.9vw;
+             word-wrap: break-word;' class="service-info">{service_info}</p>
             <p style='flex: 1; text-align: center; color: {text_color};'></p>
-            <img src="data:image/jpeg;base64,{encoded_image}" style='flex: 10; width: 150px; height: 150px;
-             object-fit: cover;'>
+            <div class="image-container">
+                <img src="data:image/jpeg;base64,{encoded_image}" style='width: 150px; height: 150px;
+                 object-fit: cover;'>
+            </div>
         </div>
     </div>
     """
@@ -190,7 +212,7 @@ def main():
         if st.button('Показать рекомендации'):
             st_button = True
 
-        st.session_state.translate = st.checkbox('', value=True, help="переводить описание фильмов")
+        st.session_state.translate = st.checkbox('', value=False, help="переводить описание фильмов")
 
     with col2:
         st.markdown(
@@ -229,7 +251,8 @@ def main():
                 columns = st.columns(top_k)
                 for index in range(min(len(recommended_movie_names), top_k)):
                     with columns[index]:
-                        movie_url = recsys.get_movie_url(recommended_movie_names[index])
+                        #movie_url = recsys.get_movie_url(recommended_movie_names[index])
+                        movie_url = False
                         original_title = recsys.get_original_title(recommended_movie_names[index])
                         overview = recsys.get_overview(recommended_movie_names[index])
                         if st.session_state.translate:
@@ -281,7 +304,7 @@ def main():
         """, unsafe_allow_html=True
     )
 
-    image = Image.open("../assets/movietape2.jpg")
+    image = Image.open("src/assets/movietape2.jpg")
     st.image(image, use_column_width="always")
 
 
