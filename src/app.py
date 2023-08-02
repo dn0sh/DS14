@@ -139,7 +139,7 @@ def main():
     text_color2 = '#06246F'
     text_color3 = '#FFFFFF'
 
-    image_path = os.path.join(os.getcwd(), "../src/assets", "movietape1.jpg")
+    image_path = os.path.join(os.getcwd(), "src/assets", "movietape1.jpg")
     encoded_image = get_base64_of_image(image_path)
 
     html_code = f"""
