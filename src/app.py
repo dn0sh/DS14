@@ -45,7 +45,7 @@ import random
 
 
 # Streamlit page configuration
-st.set_page_config(page_title="School 21 - Data Science - Project 14  © D.Sha.", page_icon="src/assets/page_icon.png",
+st.set_page_config(page_title="School 21 - Data Science - Project 14  © D.Sha.", page_icon="assets/page_icon.png",
                    layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 
